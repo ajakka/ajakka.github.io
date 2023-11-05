@@ -1,0 +1,43 @@
+/* :root {
+	--svg-color: green;
+} */
+
+body {
+	margin: 0;
+	font-family: "Rubik", serif;
+	background-color: aliceblue;
+}
+
+.main-container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.card {
+	display: flex;
+	flex-direction: row;
+}
+
+.card-image {
+	width: 32vh;
+	height: 32vh;
+	margin-inline-end: 6vh;
+
+	fill: darkslateblue;
+	stroke: darkslateblue;
+	color: darkslateblue;
+	background-color: darkslateblue;
+	/* filter: invert(56%) sepia(68%) saturate(4077%) hue-rotate(161deg)
+		brightness(94%) contrast(101%); */
+}
+
+.card-details {
+	color: darkslateblue;
+}
+
+svg {
+	color: darkslateblue;
+}
