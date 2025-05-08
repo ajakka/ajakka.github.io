@@ -8,83 +8,109 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Sometype+Mono"
     />
-    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>Abderrahim Ajakka</title>
+    <style>
+      /* Page-specific styles */
+      .ascii-name {
+        max-width: 90%;
+        overflow-x: auto;
+        align-self: center;
+      }
+
+      .ascii-art {
+        white-space: pre;
+        font-family: monospace;
+        line-height: 1.2;
+        text-align: left;
+        font-size: 1.1em;
+      }
+
+      .description {
+        margin-top: 8px;
+        text-align: left;
+      }
+
+      .links-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .terminal-navigation {
+        margin-top: 24px;
+      }
+
+      .terminal-prompt {
+        margin-bottom: 4px;
+      }
+
+      .terminal-output {
+        margin: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .ascii-art {
+          font-size: 0.95em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .ascii-art {
+          font-size: 0.6em;
+        }
+      }
+    </style>
   </head>
   <body>
     <main class="container">
       <div class="ascii-name">
-        <div>
-          <p>
-            &nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          </p>
-          <p>
-            &nbsp;&nbsp;&nbsp;/&nbsp;\&nbsp;&nbsp;|&nbsp;|__&nbsp;&nbsp;&nbsp;__|&nbsp;|&nbsp;___&nbsp;_&nbsp;__&nbsp;_&nbsp;__&nbsp;__&nbsp;_|&nbsp;|__&nbsp;(_)_&nbsp;__&nbsp;___&nbsp;&nbsp;
-          </p>
-          <p>
-            &nbsp;&nbsp;/&nbsp;_&nbsp;\&nbsp;|&nbsp;'_&nbsp;\&nbsp;/&nbsp;_`&nbsp;|/&nbsp;_&nbsp;\&nbsp;'__|&nbsp;'__/&nbsp;_`&nbsp;|&nbsp;'_&nbsp;\|&nbsp;|&nbsp;'_&nbsp;`&nbsp;_&nbsp;\&nbsp;
-          </p>
-          <p>
-            &nbsp;/&nbsp;___&nbsp;\|&nbsp;|_)&nbsp;|&nbsp;(_|&nbsp;|&nbsp;&nbsp;__/&nbsp;|&nbsp;&nbsp;|&nbsp;|&nbsp;|&nbsp;(_|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|&nbsp;|
-          </p>
-          <p>
-            /_/&nbsp;&nbsp;&nbsp;\_\_.__/&nbsp;\__,_|\___|_|&nbsp;&nbsp;|_|&nbsp;&nbsp;\__,_|_|&nbsp;|_|_|_|&nbsp;|_|&nbsp;|_|
-          </p>
-        </div>
+        <div id="ascii-art" class="ascii-art"></div>
 
-        <h3 style="margin-top: 8px">
-          Software Engineer && Technology Enthusiast
-        </h3>
+        <h3 class="description">Software Engineer && Technology Enthusiast</h3>
 
-        <div
-          style="display: flex; justify-content: space-between; margin: 8px 0"
-        >
-          <div style="display: flex; flex-direction: row">
-            <a
-              style="margin-inline-end: 12px"
-              href="https://github.com/ajakka"
-              target="_blank"
-            >
+        <div class="links-container">
+          <div class="social-links">
+            <a href="https://github.com/ajakka" target="_blank">
               <p>~/GitHub</p>
             </a>
-            <a
-              style="margin-inline-end: 12px"
-              href="https://www.linkedin.com/in/abdajakka/"
-              target="_blank"
-            >
+            <a href="https://www.linkedin.com/in/abdajakka/" target="_blank">
               <p>~/LinkedIn</p>
             </a>
-            <a
-              style="margin-inline-end: 12px"
-              href="https://stackoverflow.com/users/8679455/abderrahim-ajakka"
-            >
+            <a href="https://stackoverflow.com/users/8679455/abderrahim-ajakka">
               <p>~/StackOverflow</p>
             </a>
           </div>
-          <div>
-            <p>Lights: OFF</p>
+          <div id="theme-toggle" class="theme-toggle">
+            <p id="theme-text">Lights: OFF</p>
           </div>
         </div>
-        <div style="margin-top: 24px">
-          <div>
+
+        <div class="terminal-navigation">
+          <div class="terminal-prompt">
             <p>┌──(~)</p>
             <p>└─#&nbsp;ls</p>
           </div>
 
-          <div style="margin: 0 12px; display: flex; flex-direction: row">
-            <a style="margin-inline-end: 12px" href="./about/about.html"
-              >About</a
-            >
-            <a style="margin-inline-end: 12px" href="https://blog.ajakka.net"
-              >Blog</a
-            >
-            <a style="margin-inline-end: 12px" href="https://github.com/ajakka"
-              >Projects</a
-            >
+          <div class="terminal-output">
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
           </div>
         </div>
       </div>
     </main>
+    <script src="/scripts/lights.js"></script>
+    <script src="/scripts/ascii-art.js"></script>
   </body>
 
   <!-- The making of this website may or may not be done fully or partialy using AI :D -->

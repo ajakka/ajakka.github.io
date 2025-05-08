@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sometype+Mono"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>What is React Native Architecture anyways?</title>
+    <style>
+      .blog-container {
+        max-width: 800px;
+        padding: 40px 20px;
+        margin: 0 auto;
+      }
+
+      .blog-header {
+        margin-bottom: 32px;
+      }
+
+      .blog-title {
+        color: var(--hover-color);
+        margin-bottom: 8px;
+        font-size: 1.8em;
+      }
+
+      .blog-date {
+        font-size: 0.9em;
+        margin-bottom: 16px;
+      }
+
+      .blog-content {
+        line-height: 1.6;
+      }
+
+      .section {
+        margin: 32px 0;
+      }
+
+      .section-title {
+        color: var(--hover-color);
+        margin-bottom: 16px;
+        font-size: 1.4em;
+      }
+
+      .subsection {
+        margin: 24px 0;
+      }
+
+      .subsection-title {
+        color: var(--hover-color);
+        margin-bottom: 12px;
+        font-size: 1.2em;
+      }
+
+      .code-block {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 16px 0;
+        font-family: monospace;
+      }
+
+      .terminal-nav {
+        margin-top: 48px;
+      }
+
+      .terminal-output {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .back-button {
+        margin-bottom: 24px;
+      }
+
+      .back-button .terminal-prompt {
+        margin-bottom: 8px;
+      }
+
+      .back-button a {
+        color: var(--hover-color);
+        text-decoration: none;
+        font-family: "Sometype Mono", monospace;
+      }
+
+      .back-button a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        .blog-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <div class="blog-header">
+        <div class="terminal-prompt">
+          <p>┌──(~/blog/react-native-architecture.html)</p>
+          <p>└─# <a href="/blog">cd ..</a></p>
+        </div>
+        <h1 class="blog-title">What is React Native Architecture anyways?</h1>
+        <p class="blog-date">Published: March 13, 2024</p>
+      </div>
+
+      <div class="blog-content">
+        <p>
+          Are you a person like me who keeps hearing the term "React Native
+          Architecture" but never quite gets it? Are you a react native
+          developer who never touched the /ios and /android folders unless some
+          library requires you add some lines there? What are they talking about
+          anyways, is it something like MVC or MVVM? Is it some new folder
+          structure used to organize your code-base?
+        </p>
+
+        <p>
+          If you're like me and had these questions, I'd like to report that it
+          is none of the above. In fact, you shouldn't worry about it unless you
+          have an edge case and need to access native code to solve it, or you
+          want to develop a react native library.
+        </p>
+
+        <p>
+          That being said, let's dive into what is the react native
+          architecture.
+        </p>
+
+        <div class="section">
+          <h2 class="section-title">The Problem (The Bridge)</h2>
+          <p>
+            React Native has traditionally operated on a bridge-based
+            architecture, serving as the communication layer between the
+            JavaScript code and native platform. This bridge is asynchronous,
+            meaning that every call from JavaScript to native or vice versa must
+            pass through this bridge asynchronously.
+          </p>
+          <p>
+            This setup, while effective for a wide range of applications,
+            introduced performance bottlenecks, particularly in complex and
+            high-performance apps. Operations requiring high-frequency
+            interaction between JavaScript and the native side would incur a
+            performance penalty due to the overhead of passing messages across
+            the bridge.
+          </p>
+          <p>
+            This could lead to less smooth animations, delays in executing touch
+            events, and overall less responsive UIs. The need for a more
+            efficient way to handle these interactions prompted the exploration
+            of a new architecture.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">The Solution</h2>
+          <p>
+            The React Native team responded to these challenges with two key
+            innovations: Fabric and TurboModules. Both are designed to improve
+            React Native's performance and efficiency by reimagining the
+            architecture's core.
+          </p>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Fabric: The New UI Layer</h3>
+            <p>
+              Fabric is a new UI layer that replaces the traditional bridge with
+              a more direct connection between JavaScript and native views. It
+              utilizes a concept known as JSI (JavaScript Interface), allowing
+              JavaScript code to directly call native functions synchronously.
+              This means there's no longer a need for the asynchronous bridge
+              for every interaction, which drastically reduces the communication
+              overhead, leading to smoother animations and a more responsive
+              interface.
+            </p>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">
+              TurboModules: Efficient Native Module Loading
+            </h3>
+            <p>
+              TurboModules also leverage JSI to provide a more efficient way to
+              load and interact with native modules. Unlike the old
+              architecture, where all modules were initialized at app startup,
+              TurboModules adopts a lazy initialization approach. Modules are
+              loaded only when they are needed, reducing startup time and memory
+              usage. This approach not only speeds up the app's performance but
+              also provides a more modular and efficient system for managing
+              native code.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/lights.js"></script>
+  </body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sometype+Mono"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Mastering React Native Performance</title>
+    <style>
+      .blog-container {
+        max-width: 800px;
+        padding: 40px 20px;
+        margin: 0 auto;
+      }
+
+      .blog-header {
+        margin-bottom: 32px;
+      }
+
+      .blog-title {
+        color: var(--hover-color);
+        margin-bottom: 8px;
+        font-size: 1.8em;
+      }
+
+      .blog-date {
+        font-size: 0.9em;
+        margin-bottom: 16px;
+      }
+
+      .blog-content {
+        line-height: 1.6;
+      }
+
+      .section {
+        margin: 32px 0;
+      }
+
+      .section-title {
+        color: var(--hover-color);
+        margin-bottom: 16px;
+        font-size: 1.4em;
+      }
+
+      .subsection {
+        margin: 24px 0;
+      }
+
+      .subsection-title {
+        color: var(--hover-color);
+        margin-bottom: 12px;
+        font-size: 1.2em;
+      }
+
+      .code-block {
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        border-radius: 4px;
+        overflow-x: auto;
+        margin: 16px 0;
+        font-family: monospace;
+      }
+
+      .terminal-nav {
+        margin-top: 48px;
+      }
+
+      .terminal-output {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      @media (max-width: 480px) {
+        .blog-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <div class="blog-header">
+        <div class="terminal-prompt">
+          <p>┌──(~/blog/react-native-performance.html)</p>
+          <p>└─# <a href="/blog">cd ..</a></p>
+        </div>
+        <h1 class="blog-title">
+          Mastering React Native Performance: A Deep Dive
+        </h1>
+        <p class="blog-date">Published: May 7, 2025</p>
+      </div>
+
+      <div class="blog-content">
+        <p>
+          Performance optimization in React Native is both an art and a science.
+          After years of building cross-platform applications, I've discovered
+          that truly performant apps require a systematic approach and a deep
+          understanding of React Native's internals. This post explores
+          practical techniques to significantly improve your app's performance.
+        </p>
+
+        <div class="section">
+          <h2 class="section-title">
+            Understanding the React Native Architecture
+          </h2>
+          <p>
+            Before optimizing, you need to understand what you're optimizing.
+            React Native operates across three main threads:
+          </p>
+          <ul>
+            <li>
+              <strong>JavaScript Thread:</strong> Where your React code runs,
+              handling component logic and state
+            </li>
+            <li>
+              <strong>Main/UI Thread:</strong> The native thread responsible for
+              rendering UI elements
+            </li>
+            <li>
+              <strong>Shadow Thread:</strong> Calculates layouts using Yoga, a
+              cross-platform layout engine
+            </li>
+          </ul>
+          <p>
+            Performance bottlenecks typically occur when there's excessive
+            communication between these threads or when any single thread
+            becomes overloaded.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">1. Render Optimization</h2>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Preventing Unnecessary Re-renders</h3>
+            <p>
+              React Native's performance can significantly degrade when
+              components re-render unnecessarily. Here are proven strategies to
+              minimize re-renders:
+            </p>
+            <ul>
+              <li>
+                Use React.memo() for functional components that render often but
+                rarely change
+              </li>
+              <li>Implement shouldComponentUpdate() in class components</li>
+              <li>Use the useCallback() hook to memoize function references</li>
+              <li>Apply useMemo() to expensive calculations</li>
+            </ul>
+
+            <div class="code-block">
+              <pre>
+// Example: Memoizing a component with React.memo
+const ExpensiveComponent = React.memo(({ data }) => {
+  // Component logic
+  return (
+    // JSX here
+  );
+});
+
+// Example: Optimizing function references
+const handlePress = useCallback(() => {
+  // Handle press logic
+}, [/* dependencies */]);
+
+// Example: Memoizing expensive calculations
+const sortedItems = useMemo(() => {
+  return items.sort((a, b) => a.priority - b.priority);
+}, [items]);</pre
+              >
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Flattening Deep Component Trees</h3>
+            <p>
+              Deep component hierarchies increase the React reconciliation
+              workload. Consider these techniques:
+            </p>
+            <ul>
+              <li>Flatten your component tree where possible</li>
+              <li>Use React.PureComponent or React.memo strategically</li>
+              <li>Consider component composition rather than deep nesting</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">2. Optimizing JavaScript Execution</h2>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Moving Work to the Right Thread</h3>
+            <p>
+              The JavaScript thread can easily become a bottleneck. Offload
+              processing when possible:
+            </p>
+            <ul>
+              <li>
+                Use <code>InteractionManager</code> to defer non-critical work
+              </li>
+              <li>
+                Consider Hermes engine for improved JavaScript performance
+              </li>
+              <li>
+                Implement native modules for computationally intensive tasks
+              </li>
+            </ul>
+
+            <div class="code-block">
+              <pre>
+// Deferring work until after animations
+InteractionManager.runAfterInteractions(() => {
+  // Expensive operation that can wait
+  processLargeDataSet();
+});</pre
+              >
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Leveraging the New Architecture</h3>
+            <p>
+              React Native's new architecture offers significant performance
+              improvements:
+            </p>
+            <ul>
+              <li>
+                <strong>JavaScript Interface (JSI):</strong> Direct
+                communication between JavaScript and native, bypassing the
+                bridge
+              </li>
+              <li>
+                <strong>Fabric:</strong> New rendering system with synchronous
+                layout calculations
+              </li>
+              <li>
+                <strong>TurboModules:</strong> Lazy-loaded native modules with
+                type-safe interfaces
+              </li>
+            </ul>
+            <p>
+              When working with the new architecture, you can write
+              performance-critical code using Reanimated 2's worklets to run
+              JavaScript code on the UI thread.
+            </p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">3. Memory Management</h2>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Preventing Memory Leaks</h3>
+            <p>Memory leaks can cause performance degradation over time:</p>
+            <ul>
+              <li>Clean up event listeners, timers, and subscriptions</li>
+              <li>Use useRef for cache implementations</li>
+            </ul>
+
+            <div class="code-block">
+              <pre>
+useEffect(() => {
+  const subscription = someEventEmitter.addListener('event', handleEvent);
+  
+  // Clean up on unmount
+  return () => {
+    subscription.remove();
+  };
+}, []);</pre
+              >
+            </div>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">Image Optimization</h3>
+            <p>Images are often the largest memory consumers in mobile apps:</p>
+            <ul>
+              <li>
+                Use appropriate image resolutions for different screen sizes
+              </li>
+              <li>Implement progressive loading for large images</li>
+              <li>
+                Consider using <code>react-native-fast-image</code> for improved
+                caching
+              </li>
+              <li>Compress images before bundling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">4. List Optimization</h2>
+          <p>
+            Lists are notorious performance bottlenecks in React Native
+            applications:
+          </p>
+          <ul>
+            <li>
+              Always use FlatList, SectionList or FlashList instead of map() for
+              rendering lists
+            </li>
+            <li>
+              Implement getItemLayout when possible for fixed-height items
+            </li>
+            <li>Use keyExtractor properly</li>
+            <li>Optimize renderItem with memo (if necessary)</li>
+            <li>
+              Use windowSize, maxToRenderPerBatch, and updateCellsBatchingPeriod
+              props
+            </li>
+          </ul>
+
+          <div class="code-block">
+            <pre>
+// Optimized FlatList configuration
+&lt;FlatList
+  data={items}
+  renderItem={renderItem}
+  keyExtractor={(item) => item.id.toString()}
+  getItemLayout={(data, index) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  })}
+  initialNumToRender={10}
+  maxToRenderPerBatch={10}
+  windowSize={10}
+  removeClippedSubviews={true}
+/&gt;</pre
+            >
+          </div>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">5. Bundle Optimization</h2>
+          <p>
+            Reducing bundle size improves startup time and overall performance:
+          </p>
+          <ul>
+            <li>Use production builds with Hermes enabled</li>
+            <li>Remove unused dependencies</li>
+            <li>Implement tree shaking</li>
+            <li>Use the bundle analyzer to identify large dependencies</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">6. Measuring Performance</h2>
+          <p>
+            You can't improve what you don't measure. Use these tools to profile
+            your app:
+          </p>
+          <ul>
+            <li>React DevTools Profiler (React Native >= 0.76)</li>
+            <li>Flipper with React Native plugins (React Native <= 0.75)</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2 class="section-title">Conclusion</h2>
+          <p>
+            Performance optimization is an ongoing process, not a one-time task.
+            The most successful React Native developers approach optimization
+            methodically:
+          </p>
+          <ol>
+            <li>Measure performance to identify bottlenecks</li>
+            <li>Apply targeted optimizations for specific issues</li>
+            <li>Verify improvements through metrics</li>
+            <li>Iterate and refine</li>
+          </ol>
+          <p>
+            By understanding React Native's architecture and implementing these
+            techniques, you can create applications that not only function well
+            but provide the smooth, responsive experience users expect from
+            native apps.
+          </p>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/lights.js"></script>
+  </body>
+</html>

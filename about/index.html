@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sometype+Mono"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>About</title>
+    <style>
+      .about-container {
+        max-width: 800px;
+        padding: 40px 20px;
+        margin: 0 auto;
+      }
+
+      .about-content {
+        line-height: 1.6;
+        margin-bottom: 24px;
+      }
+
+      .tech-stack {
+        margin-top: 32px;
+        max-width: 600px;
+      }
+
+      .command-output {
+        margin-top: 8px;
+        margin-left: 12px;
+        line-height: 1.4;
+      }
+
+      .skill-section {
+        margin-bottom: 16px;
+      }
+
+      .skill-title {
+        margin-bottom: 4px;
+      }
+
+      .skill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-item {
+        background-color: rgba(127, 133, 142, 0.1);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.9em;
+      }
+
+      .projects-section {
+        margin-top: 24px;
+      }
+
+      .project-item {
+        margin-bottom: 8px;
+      }
+
+      .project-name {
+        color: var(--hover-color);
+      }
+
+      .terminal-nav {
+        margin-top: 32px;
+      }
+
+      .terminal-output {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .tech-focus {
+        margin-top: 32px;
+        max-width: 600px;
+      }
+
+      .approach-content {
+        line-height: 1.5;
+        margin-left: 12px;
+      }
+
+      .highlight {
+        color: var(--hover-color);
+        font-weight: bold;
+      }
+
+      .back-button {
+        margin-bottom: 24px;
+      }
+
+      .back-button .terminal-prompt {
+        margin-bottom: 8px;
+      }
+
+      .back-button {
+        text-decoration: none;
+        font-family: "Sometype Mono", monospace;
+      }
+
+      @media (max-width: 768px) {
+        .skill-list {
+          gap: 6px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .about-container {
+          padding: 20px;
+        }
+
+        .skill-item {
+          font-size: 0.85em;
+          padding: 3px 6px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="about-container">
+      <div class="back-button">
+        <div class="terminal-prompt">
+          <p>┌──(~/about)</p>
+          <p>└─# <a href="/">cd ~</a></p>
+        </div>
+      </div>
+
+      <div class="about-content">
+        <p>
+          I'm a mobile developer that specializes in building apps using React
+          Native.
+        </p>
+        <p style="margin-top: 12px">
+          My expertise lies in crafting clean and well-optimized cross-platform
+          applications with a focus on architecture and performance. I enjoy
+          diving deep into React Native internals, exploring both the old and
+          new architecture to expand the possibilities of what can be achieved.
+        </p>
+      </div>
+
+      <div class="tech-stack">
+        <div class="terminal-prompt">
+          <p>┌──(~)</p>
+          <p>└─# cat skills.json | jq</p>
+        </div>
+
+        <div class="command-output">
+          <div class="skill-section">
+            <p class="skill-title">Web / Mobile Development</p>
+            <div class="skill-list">
+              <span class="skill-item">TypeScript</span>
+              <span class="skill-item">React</span>
+              <span class="skill-item">React Native / Expo</span>
+              <span class="skill-item">Old / New Architecture</span>
+              <span class="skill-item"
+                >Native Development (Kotlin / Swift)</span
+              >
+            </div>
+          </div>
+
+          <div class="skill-section">
+            <p class="skill-title">State Management</p>
+            <div class="skill-list">
+              <span class="skill-item">Zustand</span>
+              <span class="skill-item">TanStack Query</span>
+              <span class="skill-item">Context API</span>
+              <span class="skill-item">Redux Toolkit</span>
+            </div>
+          </div>
+
+          <div class="skill-section">
+            <p class="skill-title">Storage</p>
+            <div class="skill-list">
+              <span class="skill-item">AsyncStorage</span>
+              <span class="skill-item">MMKV</span>
+              <span class="skill-item">SQLite</span>
+            </div>
+          </div>
+
+          <div class="skill-section">
+            <p class="skill-title">UI</p>
+            <div class="skill-list">
+              <span class="skill-item">Custom Components</span>
+              <span class="skill-item">UI Kitten</span>
+              <span class="skill-item">React Native Paper</span>
+            </div>
+          </div>
+
+          <div class="skill-section">
+            <p class="skill-title">Testing</p>
+            <div class="skill-list">
+              <span class="skill-item">Jest</span>
+              <span class="skill-item">React Native Testing Library</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects-section">
+        <div class="terminal-prompt">
+          <p>┌──(~)</p>
+          <p>└─# ls -la projects/</p>
+        </div>
+
+        <div class="command-output">
+          <div class="project-item">
+            <a
+              href="https://github.com/ajakka/react-native-here-explore"
+              target="_blank"
+            >
+              <span class="project-name">react-native-here-explore</span> -
+              Bridging HERE Maps SDK with React Native
+            </a>
+          </div>
+          <div class="project-item">
+            <a
+              href="https://github.com/ajakka/react-native-reaction-bubble"
+              target="_blank"
+            >
+              <span class="project-name">react-native-reaction-bubble</span> -
+              Remake of the WhatsApp reactions bubble
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/lights.js"></script>
+  </body>
+</html>

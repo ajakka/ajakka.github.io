@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sometype+Mono"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Blog</title>
+    <style>
+      .blog-container {
+        max-width: 800px;
+        padding: 40px 20px;
+        margin: 0 auto;
+      }
+
+      .blog-header {
+        margin-bottom: 32px;
+      }
+
+      .blog-list {
+        margin-top: 24px;
+        margin-left: 12px;
+      }
+
+      .blog-item {
+        margin-bottom: 24px;
+      }
+
+      .blog-title {
+        color: var(--hover-color);
+        margin-bottom: 8px;
+        font-size: 1.2em;
+      }
+
+      .blog-date {
+        font-size: 0.9em;
+        margin-bottom: 8px;
+      }
+
+      .blog-excerpt {
+        margin-bottom: 12px;
+        line-height: 1.4;
+      }
+
+      .back-button {
+        margin-bottom: 24px;
+      }
+
+      .back-button .terminal-prompt {
+        margin-bottom: 8px;
+      }
+
+      .back-button a {
+        color: var(--hover-color);
+        text-decoration: none;
+        font-family: "Sometype Mono", monospace;
+      }
+
+      .back-button a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 480px) {
+        .blog-container {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <div class="back-button">
+        <div class="terminal-prompt">
+          <p>┌──(~/blog)</p>
+          <p>└─# <a href="/">cd ~</a></p>
+        </div>
+      </div>
+
+      <div class="blog-header">
+        <h1 style="color: var(--hover-color); margin-top: 12px">Blog Posts</h1>
+      </div>
+
+      <div class="blog-list">
+        <div class="blog-item">
+          <a href="./react-native-performance.html">
+            <h2 class="blog-title">
+              Mastering React Native Performance: A Deep Dive
+            </h2>
+          </a>
+          <p class="blog-date">May 7, 2025</p>
+          <p class="blog-excerpt">
+            Performance optimization in React Native is both an art and a
+            science. This post explores practical techniques to significantly
+            improve your app's performance through render optimization, thread
+            management, and more.
+          </p>
+          <a href="./react-native-performance.html">Read more →</a>
+        </div>
+
+        <div class="blog-item">
+          <a href="./react-native-architecture.html">
+            <h2 class="blog-title">
+              What is React Native Architecture anyways?
+            </h2>
+          </a>
+          <p class="blog-date">March 13, 2024</p>
+          <p class="blog-excerpt">
+            A deep dive into React Native's architecture, exploring the
+            traditional bridge-based system and the new Fabric and TurboModules
+            innovations that are revolutionizing performance and efficiency.
+          </p>
+          <a href="./react-native-architecture.html">Read more →</a>
+        </div>
+      </div>
+    </div>
+    <script src="/scripts/lights.js"></script>
+  </body>
+</html>
