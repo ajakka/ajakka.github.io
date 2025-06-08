@@ -1,15 +1,43 @@
-/* Dark mode (default) */
+/* Default Dark Theme */
 :root {
   --bg-color: #151a21;
   --text-color: #7f858e;
   --hover-color: #a7adb4;
 }
 
-/* Light mode */
-body.light-mode {
+/* Light Theme */
+body.theme-light {
   --bg-color: #f5f5f5;
   --text-color: #333;
   --hover-color: #000;
+}
+
+/* Terminal Green Dark */
+body.theme-terminal-dark {
+  --bg-color: #000000;
+  --text-color: #00ff00;
+  --hover-color: #00dd00;
+}
+
+/* Terminal Green Light */
+body.theme-terminal-light {
+  --bg-color: #f0f0f0;
+  --text-color: #006600;
+  --hover-color: #004400;
+}
+
+/* Gnome Terminal Dark */
+body.theme-gnome-dark {
+  --bg-color: #2e3436;
+  --text-color: #d3d7cf;
+  --hover-color: #eeeeec;
+}
+
+/* Gnome Terminal Light */
+body.theme-gnome-light {
+  --bg-color: #fdf6e3;
+  --text-color: #586e75;
+  --hover-color: #073642;
 }
 
 /* Global styles */

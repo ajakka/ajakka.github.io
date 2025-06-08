@@ -58,6 +58,22 @@
         gap: 12px;
       }
 
+      .theme-option {
+        cursor: pointer;
+        transition: color 0.2s ease;
+        user-select: none;
+      }
+
+      .theme-option:hover {
+        color: var(--hover-color);
+        text-decoration: underline;
+      }
+
+      .theme-option.active {
+        color: var(--hover-color);
+        text-decoration: underline;
+      }
+
       /* Responsive adjustments */
       @media (max-width: 768px) {
         .ascii-art {
@@ -105,6 +121,19 @@
           <div class="terminal-output">
             <a href="/about">About</a>
             <a href="/blog">Blog</a>
+          </div>
+
+          <div class="terminal-prompt" style="margin-top: 16px">
+            <p>┌──(~)</p>
+            <p>└─#&nbsp;theme --list</p>
+          </div>
+
+          <div class="terminal-output" id="theme-selector">
+            <span class="theme-option active" data-theme="default"
+              >default</span
+            >
+            <span class="theme-option" data-theme="terminal">terminal</span>
+            <span class="theme-option" data-theme="gnome">gnome</span>
           </div>
         </div>
       </div>
