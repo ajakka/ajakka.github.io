@@ -84,8 +84,137 @@ a:hover {
   user-select: none;
 }
 
+/* Vim Navigation Styles */
+.vim-focused {
+  outline: 2px solid var(--hover-color) !important;
+  outline-offset: 2px;
+  background-color: rgba(127, 133, 142, 0.1) !important;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+.vim-status {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 4px 12px;
+  font-family: "Sometype Mono", monospace;
+  font-size: 0.9em;
+  border-top: 1px solid var(--text-color);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vim-hint {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 16px;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  font-family: "Sometype Mono", monospace;
+  font-size: 0.85em;
+  z-index: 1001;
+  max-width: 300px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  line-height: 1.4;
+}
+
+.vim-help-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+}
+
+.vim-help-content {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid var(--text-color);
+  font-family: "Sometype Mono", monospace;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.vim-help-content h3 {
+  margin-top: 0;
+  color: var(--hover-color);
+  text-align: center;
+}
+
+.vim-help-content h4 {
+  color: var(--hover-color);
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+
+.vim-help-content .help-section {
+  margin-bottom: 16px;
+}
+
+.vim-help-content p {
+  margin: 4px 0;
+  padding-left: 12px;
+}
+
+.vim-help-content kbd {
+  background-color: rgba(127, 133, 142, 0.2);
+  border: 1px solid var(--text-color);
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: "Sometype Mono", monospace;
+  font-size: 0.9em;
+  color: var(--hover-color);
+}
+
+.vim-hint kbd {
+  background-color: rgba(127, 133, 142, 0.2);
+  border: 1px solid var(--text-color);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-family: "Sometype Mono", monospace;
+  font-size: 0.85em;
+  color: var(--hover-color);
+}
+
+/* Add padding to body to account for vim status bar */
+body {
+  padding-bottom: 30px;
+}
+
 @media (max-width: 480px) {
   body {
     font-size: 14px;
+  }
+
+  .vim-hint {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+    font-size: 0.8em;
+    padding: 12px;
+  }
+
+  .vim-help-content {
+    margin: 20px;
+    padding: 16px;
+    font-size: 0.85em;
   }
 }
