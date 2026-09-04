@@ -154,10 +154,23 @@ code {
 /* Prompt row at the top of a page: breadcrumb on the left, lights on the right. */
 .page-header {
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--space-3);
   margin-bottom: var(--space-5);
+}
+
+/* The left side yields first: it wraps inside itself instead of pushing the
+   lights toggle onto its own line. */
+.page-header > .link-row {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+.page-header > .theme-toggle {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .section {
