@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,93 +9,24 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <title>Mastering React Native Performance</title>
-    <style>
-      .blog-container {
-        max-width: 800px;
-        padding: 40px 20px;
-        margin: 0 auto;
-      }
-
-      .blog-header {
-        margin-bottom: 32px;
-      }
-
-      .blog-title {
-        color: var(--hover-color);
-        margin-bottom: 8px;
-        font-size: 1.8em;
-      }
-
-      .blog-date {
-        font-size: 0.9em;
-        margin-bottom: 16px;
-      }
-
-      .blog-content {
-        line-height: 1.6;
-      }
-
-      .section {
-        margin: 32px 0;
-      }
-
-      .section-title {
-        color: var(--hover-color);
-        margin-bottom: 16px;
-        font-size: 1.4em;
-      }
-
-      .subsection {
-        margin: 24px 0;
-      }
-
-      .subsection-title {
-        color: var(--hover-color);
-        margin-bottom: 12px;
-        font-size: 1.2em;
-      }
-
-      .code-block {
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        border-radius: 4px;
-        overflow-x: auto;
-        margin: 16px 0;
-        font-family: monospace;
-      }
-
-      .terminal-nav {
-        margin-top: 48px;
-      }
-
-      .terminal-output {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 8px;
-      }
-
-      @media (max-width: 480px) {
-        .blog-container {
-          padding: 20px;
-        }
-      }
-    </style>
   </head>
   <body>
-    <div class="blog-container">
-      <div class="blog-header">
-        <div class="terminal-prompt">
-          <p>┌──(~/blog/react-native-performance.html)</p>
-          <p>└─# <a href="/blog">cd ..</a></p>
+    <div class="page">
+      <header class="post-header">
+        <div class="page-header">
+          <div class="terminal-prompt">
+            <p>┌──(~/blog/react-native-performance.html)</p>
+            <p>└─# <a href="/blog">cd ..</a></p>
+          </div>
+          <div id="theme-toggle" class="theme-toggle">
+            <p id="theme-text">Lights: OFF</p>
+          </div>
         </div>
-        <h1 class="blog-title">
-          Mastering React Native Performance: A Deep Dive
-        </h1>
-        <p class="blog-date">Published: May 7, 2025</p>
-      </div>
+        <h1>Mastering React Native Performance: A Deep Dive</h1>
+        <p class="meta">Published: May 7, 2025</p>
+      </header>
 
-      <div class="blog-content">
+      <div class="prose">
         <p>
           Performance optimization in React Native is both an art and a science.
           After years of building cross-platform applications, I've discovered
@@ -105,9 +36,7 @@
         </p>
 
         <div class="section">
-          <h2 class="section-title">
-            Understanding the React Native Architecture
-          </h2>
+          <h2>Understanding the React Native Architecture</h2>
           <p>
             Before optimizing, you need to understand what you're optimizing.
             React Native operates across three main threads:
@@ -134,10 +63,10 @@
         </div>
 
         <div class="section">
-          <h2 class="section-title">1. Render Optimization</h2>
+          <h2>1. Render Optimization</h2>
 
           <div class="subsection">
-            <h3 class="subsection-title">Preventing Unnecessary Re-renders</h3>
+            <h3>Preventing Unnecessary Re-renders</h3>
             <p>
               React Native's performance can significantly degrade when
               components re-render unnecessarily. Here are proven strategies to
@@ -177,7 +106,7 @@ const sortedItems = useMemo(() => {
           </div>
 
           <div class="subsection">
-            <h3 class="subsection-title">Flattening Deep Component Trees</h3>
+            <h3>Flattening Deep Component Trees</h3>
             <p>
               Deep component hierarchies increase the React reconciliation
               workload. Consider these techniques:
@@ -191,10 +120,10 @@ const sortedItems = useMemo(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">2. Optimizing JavaScript Execution</h2>
+          <h2>2. Optimizing JavaScript Execution</h2>
 
           <div class="subsection">
-            <h3 class="subsection-title">Moving Work to the Right Thread</h3>
+            <h3>Moving Work to the Right Thread</h3>
             <p>
               The JavaScript thread can easily become a bottleneck. Offload
               processing when possible:
@@ -223,7 +152,7 @@ InteractionManager.runAfterInteractions(() => {
           </div>
 
           <div class="subsection">
-            <h3 class="subsection-title">Leveraging the New Architecture</h3>
+            <h3>Leveraging the New Architecture</h3>
             <p>
               React Native's new architecture offers significant performance
               improvements:
@@ -252,10 +181,10 @@ InteractionManager.runAfterInteractions(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">3. Memory Management</h2>
+          <h2>3. Memory Management</h2>
 
           <div class="subsection">
-            <h3 class="subsection-title">Preventing Memory Leaks</h3>
+            <h3>Preventing Memory Leaks</h3>
             <p>Memory leaks can cause performance degradation over time:</p>
             <ul>
               <li>Clean up event listeners, timers, and subscriptions</li>
@@ -277,7 +206,7 @@ useEffect(() => {
           </div>
 
           <div class="subsection">
-            <h3 class="subsection-title">Image Optimization</h3>
+            <h3>Image Optimization</h3>
             <p>Images are often the largest memory consumers in mobile apps:</p>
             <ul>
               <li>
@@ -294,7 +223,7 @@ useEffect(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">4. List Optimization</h2>
+          <h2>4. List Optimization</h2>
           <p>
             Lists are notorious performance bottlenecks in React Native
             applications:
@@ -337,7 +266,7 @@ useEffect(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">5. Bundle Optimization</h2>
+          <h2>5. Bundle Optimization</h2>
           <p>
             Reducing bundle size improves startup time and overall performance:
           </p>
@@ -350,7 +279,7 @@ useEffect(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">6. Measuring Performance</h2>
+          <h2>6. Measuring Performance</h2>
           <p>
             You can't improve what you don't measure. Use these tools to profile
             your app:
@@ -362,7 +291,7 @@ useEffect(() => {
         </div>
 
         <div class="section">
-          <h2 class="section-title">Conclusion</h2>
+          <h2>Conclusion</h2>
           <p>
             Performance optimization is an ongoing process, not a one-time task.
             The most successful React Native developers approach optimization

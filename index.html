@@ -11,54 +11,27 @@
     <link rel="stylesheet" href="/styles.css" />
     <title>Abderrahim Ajakka</title>
     <style>
-      /* Page-specific styles */
+      /* Page-specific: the ASCII banner has to scale with the viewport. */
       .ascii-name {
         max-width: 90%;
         overflow-x: auto;
-        align-self: center;
       }
 
       .ascii-art {
         white-space: pre;
-        font-family: monospace;
+        font-family: var(--font-mono);
         line-height: 1.2;
-        text-align: left;
         font-size: 1.1em;
       }
 
-      .description {
-        margin-top: 8px;
-        text-align: left;
+      .intro {
+        margin: var(--space-3) 0;
       }
 
-      .links-container {
-        display: flex;
-        justify-content: space-between;
-        gap: 12px;
+      .intro > * + * {
+        margin-top: var(--space-1);
       }
 
-      .social-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      .terminal-navigation {
-        margin-top: 24px;
-      }
-
-      .terminal-prompt {
-        margin-bottom: 4px;
-      }
-
-      .terminal-output {
-        margin: 0 12px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-      }
-
-      /* Responsive adjustments */
       @media (max-width: 768px) {
         .ascii-art {
           font-size: 0.95em;
@@ -77,34 +50,35 @@
       <div class="ascii-name">
         <div id="ascii-art" class="ascii-art"></div>
 
-        <h3 class="description">/ˌæbdɛrɑˈhiːm/</h3>
-        <h3 class="description">Software Engineer && Technology Enthusiast</h3>
+        <div class="intro">
+          <h3>/ˌæbdɛrɑˈhiːm/</h3>
+          <h3>Software Engineer && Technology Enthusiast</h3>
+        </div>
 
-        <div class="links-container">
-          <div class="social-links">
-            <a href="https://github.com/ajakka" target="_blank">
-              <p>~/GitHub</p>
-            </a>
-            <a href="https://www.linkedin.com/in/abdajakka/" target="_blank">
-              <p>~/LinkedIn</p>
-            </a>
-            <a href="https://stackoverflow.com/users/8679455/abderrahim-ajakka">
-              <p>~/StackOverflow</p>
-            </a>
+        <div class="page-header">
+          <div class="link-row">
+            <a href="https://github.com/ajakka" target="_blank">~/GitHub</a>
+            <a href="https://www.linkedin.com/in/abdajakka/" target="_blank"
+              >~/LinkedIn</a
+            >
+            <a href="https://stackoverflow.com/users/8679455/abderrahim-ajakka"
+              >~/StackOverflow</a
+            >
           </div>
           <div id="theme-toggle" class="theme-toggle">
             <p id="theme-text">Lights: OFF</p>
           </div>
         </div>
 
-        <div class="terminal-navigation">
+        <div class="section">
           <div class="terminal-prompt">
             <p>┌──(~)</p>
             <p>└─#&nbsp;ls</p>
           </div>
 
-          <div class="terminal-output">
+          <div class="command-output link-row">
             <a href="/about">About</a>
+            <a href="/projects">Projects</a>
             <a href="/blog">Blog</a>
           </div>
         </div>

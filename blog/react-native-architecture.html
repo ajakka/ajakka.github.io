@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,109 +9,24 @@
     />
     <link rel="stylesheet" href="/styles.css" />
     <title>What is React Native Architecture anyways?</title>
-    <style>
-      .blog-container {
-        max-width: 800px;
-        padding: 40px 20px;
-        margin: 0 auto;
-      }
-
-      .blog-header {
-        margin-bottom: 32px;
-      }
-
-      .blog-title {
-        color: var(--hover-color);
-        margin-bottom: 8px;
-        font-size: 1.8em;
-      }
-
-      .blog-date {
-        font-size: 0.9em;
-        margin-bottom: 16px;
-      }
-
-      .blog-content {
-        line-height: 1.6;
-      }
-
-      .section {
-        margin: 32px 0;
-      }
-
-      .section-title {
-        color: var(--hover-color);
-        margin-bottom: 16px;
-        font-size: 1.4em;
-      }
-
-      .subsection {
-        margin: 24px 0;
-      }
-
-      .subsection-title {
-        color: var(--hover-color);
-        margin-bottom: 12px;
-        font-size: 1.2em;
-      }
-
-      .code-block {
-        background-color: rgba(0, 0, 0, 0.1);
-        padding: 16px;
-        border-radius: 4px;
-        overflow-x: auto;
-        margin: 16px 0;
-        font-family: monospace;
-      }
-
-      .terminal-nav {
-        margin-top: 48px;
-      }
-
-      .terminal-output {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 8px;
-      }
-
-      .back-button {
-        margin-bottom: 24px;
-      }
-
-      .back-button .terminal-prompt {
-        margin-bottom: 8px;
-      }
-
-      .back-button a {
-        color: var(--hover-color);
-        text-decoration: none;
-        font-family: "Sometype Mono", monospace;
-      }
-
-      .back-button a:hover {
-        text-decoration: underline;
-      }
-
-      @media (max-width: 480px) {
-        .blog-container {
-          padding: 20px;
-        }
-      }
-    </style>
   </head>
   <body>
-    <div class="blog-container">
-      <div class="blog-header">
-        <div class="terminal-prompt">
-          <p>┌──(~/blog/react-native-architecture.html)</p>
-          <p>└─# <a href="/blog">cd ..</a></p>
+    <div class="page">
+      <header class="post-header">
+        <div class="page-header">
+          <div class="terminal-prompt">
+            <p>┌──(~/blog/react-native-architecture.html)</p>
+            <p>└─# <a href="/blog">cd ..</a></p>
+          </div>
+          <div id="theme-toggle" class="theme-toggle">
+            <p id="theme-text">Lights: OFF</p>
+          </div>
         </div>
-        <h1 class="blog-title">What is React Native Architecture anyways?</h1>
-        <p class="blog-date">Published: March 13, 2024</p>
-      </div>
+        <h1>What is React Native Architecture anyways?</h1>
+        <p class="meta">Published: March 13, 2024</p>
+      </header>
 
-      <div class="blog-content">
+      <div class="prose">
         <p>
           Are you a person like me who keeps hearing the term "React Native
           Architecture" but never quite gets it? Are you a react native
@@ -134,7 +49,7 @@
         </p>
 
         <div class="section">
-          <h2 class="section-title">The Problem (The Bridge)</h2>
+          <h2>The Problem (The Bridge)</h2>
           <p>
             React Native has traditionally operated on a bridge-based
             architecture, serving as the communication layer between the
@@ -159,7 +74,7 @@
         </div>
 
         <div class="section">
-          <h2 class="section-title">The Solution</h2>
+          <h2>The Solution</h2>
           <p>
             The React Native team responded to these challenges with two key
             innovations: Fabric and TurboModules. Both are designed to improve
@@ -168,7 +83,7 @@
           </p>
 
           <div class="subsection">
-            <h3 class="subsection-title">Fabric: The New UI Layer</h3>
+            <h3>Fabric: The New UI Layer</h3>
             <p>
               Fabric is a new UI layer that replaces the traditional bridge with
               a more direct connection between JavaScript and native views. It
@@ -182,9 +97,7 @@
           </div>
 
           <div class="subsection">
-            <h3 class="subsection-title">
-              TurboModules: Efficient Native Module Loading
-            </h3>
+            <h3>TurboModules: Efficient Native Module Loading</h3>
             <p>
               TurboModules also leverage JSI to provide a more efficient way to
               load and interact with native modules. Unlike the old

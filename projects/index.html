@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +11,86 @@
     <title>Projects</title>
   </head>
   <body>
-    I need more caffine
+    <div class="page">
+      <header class="page-header">
+        <div class="terminal-prompt">
+          <p>┌──(~/projects)</p>
+          <p>└─# <a href="/">cd ~</a></p>
+        </div>
+        <div id="theme-toggle" class="theme-toggle">
+          <p id="theme-text">Lights: OFF</p>
+        </div>
+      </header>
+
+      <div class="terminal-prompt">
+        <p>┌──(~/projects)</p>
+        <p>└─# ls -la</p>
+      </div>
+
+      <div class="tree">
+        <div class="tree-item">
+          <a
+            href="https://github.com/ajakka/react-native-here-explore"
+            target="_blank"
+          >
+            <span class="tree-name">react-native-here-explore</span>
+            <span class="meta">
+              -> github.com/ajakka/react-native-here-explore
+            </span>
+          </a>
+          <p>
+            Brings the HERE Maps SDK to React Native: interactive maps, markers,
+            polylines and multi-transport routing.
+          </p>
+          <div class="tag-list">
+            <span class="tag">React Native</span>
+            <span class="tag">New Architecture</span>
+            <span class="tag">Kotlin</span>
+            <span class="tag">Swift</span>
+            <span class="tag">Expo Plugin</span>
+          </div>
+        </div>
+
+        <div class="tree-item">
+          <a
+            href="https://github.com/ajakka/react-native-reaction-bubble"
+            target="_blank"
+          >
+            <span class="tree-name">react-native-reaction-bubble</span>
+            <span class="meta">
+              -> github.com/ajakka/react-native-reaction-bubble
+            </span>
+          </a>
+          <p>Remake of the WhatsApp reactions bubble.</p>
+          <div class="tag-list">
+            <span class="tag">React Native</span>
+            <span class="tag">Reanimated</span>
+          </div>
+        </div>
+
+        <div class="tree-item">
+          <a href="https://wiways.com/" target="_blank">
+            <span class="tree-name">wiways</span>
+            <span class="meta">-> wiways.com</span>
+          </a>
+          <p>
+            A platform for travel agencies to build and manage adventure
+            itineraries, handle bookings and deliver trips to their clients.
+          </p>
+        </div>
+
+        <div class="tree-item">
+          <a href="https://www.anyfikra.com/delulu-jar" target="_blank">
+            <span class="tree-name">delulu-jar</span>
+            <span class="meta">-> anyfikra.com/delulu-jar</span>
+          </a>
+          <p>
+            A private mobile app for couples to exchange sweet messages,
+            compliments and notes, then pull one back out at random.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <script src="/scripts/lights.js"></script>
   </body>

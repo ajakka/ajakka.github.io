@@ -1,19 +1,22 @@
-// Theme toggling functionality
-const themeToggle = document.getElementById("theme-toggle");
-const themeText = document.getElementById("theme-text");
+// Theme toggling — loaded on every page, so it must survive pages that don't
+// render a toggle.
+(function () {
+  const applyTheme = (isLight) => {
+    document.body.classList.toggle("light-mode", isLight);
+    const themeText = document.getElementById("theme-text");
+    if (themeText) {
+      themeText.textContent = isLight ? "Lights: ON" : "Lights: OFF";
+    }
+  };
 
-// Check for saved theme preference
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "light") {
-  document.body.classList.add("light-mode");
-  themeText.textContent = "Lights: ON";
-}
+  applyTheme(localStorage.getItem("theme") === "light");
 
-// Toggle theme on click
-themeToggle.addEventListener("click", () => {
-  const isLightMode = document.body.classList.toggle("light-mode");
-  themeText.textContent = isLightMode ? "Lights: ON" : "Lights: OFF";
+  const themeToggle = document.getElementById("theme-toggle");
+  if (!themeToggle) return;
 
-  // Save preference to localStorage
-  localStorage.setItem("theme", isLightMode ? "light" : "dark");
-});
+  themeToggle.addEventListener("click", () => {
+    const isLight = !document.body.classList.contains("light-mode");
+    applyTheme(isLight);
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+})();

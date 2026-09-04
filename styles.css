@@ -1,24 +1,98 @@
-/* Dark mode (default) */
+/*
+  Design system: Every page loads this file and should style itself
+  with the tokens and components below. See README.md before adding a new rule.
+*/
+
+/* 1. Tokens */
 :root {
-  --bg-color: #151a21;
-  --text-color: #7f858e;
-  --hover-color: #a7adb4;
+  /* Color — dark mode (default) */
+  --color-bg: #151a21;
+  --color-surface: rgba(127, 133, 142, 0.12);
+  --color-border: rgba(127, 133, 142, 0.25);
+  --color-text: #7f858e;
+  --color-muted: #676d76;
+  --color-bright: #a7adb4;
+
+  /* Type */
+  --font-mono: "Sometype Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --text-xs: 0.8rem;
+  --text-sm: 0.9rem;
+  --text-base: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.6rem;
+
+  --leading-tight: 1.3;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.7;
+
+  /* Space */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  /* Shape & layout */
+  --radius: 4px;
+  --page-width: 800px;
+  --page-padding: var(--space-6) var(--space-5);
+
+  /* Legacy aliases — kept so older markup keeps working */
+  --bg-color: var(--color-bg);
+  --text-color: var(--color-text);
+  --hover-color: var(--color-bright);
 }
 
-/* Light mode */
+/* Color — light mode */
 body.light-mode {
-  --bg-color: #f5f5f5;
-  --text-color: #333;
-  --hover-color: #000;
+  --color-bg: #f5f5f5;
+  --color-surface: rgba(0, 0, 0, 0.06);
+  --color-border: rgba(0, 0, 0, 0.15);
+  --color-text: #333333;
+  --color-muted: #666666;
+  --color-bright: #000000;
+
+  /* Legacy aliases resolve where they are declared, so restate them here */
+  --bg-color: var(--color-bg);
+  --text-color: var(--color-text);
+  --hover-color: var(--color-bright);
 }
 
-/* Global styles */
+/* 2. Base elements */
 body {
   margin: 0;
-  font-family: "Sometype Mono", serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-bright);
+  font-weight: normal;
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--text-2xl);
+}
+
+h2 {
+  font-size: var(--text-xl);
+}
+
+h3 {
+  font-size: var(--text-lg);
 }
 
 p {
@@ -26,17 +100,40 @@ p {
 }
 
 a {
-  color: var(--text-color);
+  color: var(--color-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--hover-color);
+  color: var(--color-bright);
   text-decoration: underline;
 }
 
-/* Layout */
+ul {
+  margin: var(--space-3) 0;
+  padding-inline-start: var(--space-5);
+}
+
+li + li {
+  margin-top: var(--space-2);
+}
+
+strong {
+  color: var(--color-bright);
+  font-weight: normal;
+}
+
+code {
+  font-family: var(--font-mono);
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 0 var(--space-1);
+}
+
+/* 3. Layout */
+
+/* Full-viewport centered layout — the home page. */
 .container {
   width: 100%;
   min-height: 100vh;
@@ -44,19 +141,191 @@ a:hover {
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  padding: var(--space-5);
 }
 
-/* Common components */
+/* Reading-width column — every other page. */
+.page {
+  max-width: var(--page-width);
+  padding: var(--page-padding);
+  margin: 0 auto;
+}
+
+/* Prompt row at the top of a page: breadcrumb on the left, lights on the right. */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.section {
+  margin-top: var(--space-6);
+}
+
+.subsection {
+  margin-top: var(--space-5);
+}
+
+.section > * + *,
+.subsection > * + * {
+  margin-top: var(--space-3);
+}
+
+/* 4. Components */
+
+/* The `┌──(~/path)` / `└─# command` block. */
 .terminal-prompt {
-  line-height: 1.4;
+  line-height: var(--leading-tight);
+}
+
+/* Indented result of a prompt. */
+.command-output {
+  margin-top: var(--space-2);
+  margin-left: var(--space-3);
+}
+
+/* Row of links rendered as terminal output (nav, social links). */
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+/* Body copy blocks. */
+.prose {
+  line-height: var(--leading-relaxed);
+}
+
+.prose > * + * {
+  margin-top: var(--space-3);
+}
+
+/* Article header: prompt row, title, date. */
+.post-header {
+  margin-bottom: var(--space-6);
+}
+
+.post-header > * + * {
+  margin-top: var(--space-2);
+}
+
+/* Secondary text: dates, captions, tech notes. */
+.meta {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+/* A listed item: skill group, or any block in command output. */
+.entry + .entry {
+  margin-top: var(--space-4);
+}
+
+.entry > * + * {
+  margin-top: var(--space-1);
+}
+
+/* `tree`-style listing: items hang off a drawn branch, last one closes it. */
+.tree {
+  margin-top: var(--space-3);
+}
+
+.tree-item {
+  position: relative;
+  padding-left: 3ch;
+  padding-bottom: var(--space-4);
+}
+
+.tree-item:last-child {
+  padding-bottom: 0;
+}
+
+/* The trunk running down the listing. */
+.tree-item::before {
+  content: "";
+  position: absolute;
+  left: 0.5ch;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--color-border);
+}
+
+/* On the last item the trunk stops at the elbow, so it reads as `└──`. */
+.tree-item:last-child::before {
+  bottom: auto;
+  height: 0.7em;
+}
+
+/* The elbow into the item name. */
+.tree-item::after {
+  content: "";
+  position: absolute;
+  left: 0.5ch;
+  top: 0.7em;
+  width: 1.8ch;
+  border-top: 1px solid var(--color-border);
+}
+
+.tree-item > * + * {
+  margin-top: var(--space-1);
+}
+
+/* Item name — a filename in a listing: same size as everything else,
+   set apart by color only. */
+.tree-name {
+  color: var(--color-bright);
+}
+
+a:hover .tree-name {
+  text-decoration: underline;
+}
+
+/* Tech tags, printed as shell words rather than pills. */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.tag::before {
+  content: "[";
+}
+
+.tag::after {
+  content: "]";
+}
+
+.code-block {
+  background-color: var(--color-surface);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  overflow-x: auto;
+  margin: var(--space-4) 0;
+}
+
+.code-block pre {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
 }
 
 .theme-toggle {
   cursor: pointer;
   user-select: none;
+  white-space: nowrap;
 }
 
+/* 5. Responsive */
 @media (max-width: 480px) {
+  :root {
+    --page-padding: var(--space-5) var(--space-4);
+    --text-2xl: 1.4rem;
+    --text-xl: 1.2rem;
+  }
+
   body {
     font-size: 14px;
   }
